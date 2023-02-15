@@ -7,7 +7,6 @@ export abstract class Consumable extends Item {
         name: string,
         value: number,
         weight: number,
-        /** TODO: UML mark it as private */
         private _isSpoiled: boolean = false
     ) {
         super(name, value, weight)
@@ -21,7 +20,6 @@ export abstract class Consumable extends Item {
     }
 
     /**
-     * TODO: check!!!
      * should return void based on UML
      * */
     use(): string {

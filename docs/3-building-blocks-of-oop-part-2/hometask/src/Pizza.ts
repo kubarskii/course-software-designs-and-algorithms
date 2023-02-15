@@ -4,12 +4,8 @@ export class Pizza extends Consumable {
     private numberOfEatenSlices: number = 0
 
     /**
-     * TODO: CHECK!!
      * UML and tests are slightly different
      * switched places for numberOfSlices and isSpoiled
-     *
-     * Check weather Consumable isSpoiled should be public???
-     * @see {Consumable}
      * */
     constructor(
         value: number,
@@ -28,10 +24,6 @@ export class Pizza extends Consumable {
         if (++this.numberOfEatenSlices >= this.numberOfSlices)
             this.isConsumed = true
 
-        /**
-         * TODO: Uncomment if isSpoiled is public
-         * @see {Consumable}
-         */
         if (this.isSpoiled())
             message += '\nYou feel sick.'
 
