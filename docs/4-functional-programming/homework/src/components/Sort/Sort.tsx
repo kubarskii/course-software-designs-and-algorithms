@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -6,10 +6,11 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 import styles from './Sort.module.scss';
+import { TSortingOrder } from 'src/store';
 
 interface SortProps {
   store?: {};
-  updateStore?: (val) => void;
+  updateStore?: (val: TSortingOrder) => void;
 }
 
 // OR
@@ -22,8 +23,10 @@ interface SortProps {
 // OR store can be global
 
 export const Sort: FC<SortProps> = props => {
-  const handleChange = value => {
-    console.log(value); // for debugging
+  const { updateStore } = props;
+
+  const handleChange = (value: TSortingOrder) => {
+    updateStore(value);
   };
 
   return (
@@ -33,7 +36,7 @@ export const Sort: FC<SortProps> = props => {
         className={styles.group}
         aria-label="sorting"
         name="radio-buttons-group"
-        onChange={e => handleChange(e.target.value)}
+        onChange={e => handleChange(e.target.value as TSortingOrder)}
       >
         <FormControlLabel value="desc" control={<Radio />} label="desc" />
         <FormControlLabel value="asc" control={<Radio />} label="asc" />

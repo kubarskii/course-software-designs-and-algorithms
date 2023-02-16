@@ -1,4 +1,4 @@
-import { useState, FC } from 'react';
+import React, { useState, FC } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
@@ -7,24 +7,27 @@ import styles from './Search.module.scss';
 
 interface SearchProps {
   store?: {};
-  updateStore?: (val) => void;
+  updateStore?: (val: string) => void;
 }
 
 // OR
 
-//interface SearchProps {
+// interface SearchProps {
 //  selected?: {};
 //  updateSelected?: (val) => void;
-//}
+// }
 
 // OR store can be global
 
 export const Search: FC<SearchProps> = props => {
+  const { store, updateStore } = props;
+
   const [searchedValue, setSearchedValue] = useState('');
 
   const onChange = value => {
-    console.log(value); // for debugging
+    // console.log(value); // for debugging
     setSearchedValue(value);
+    updateStore(value);
   };
 
   return (
