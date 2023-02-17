@@ -7,23 +7,36 @@ const either = (f, g) => x => f(x) || g(x);
 const True = () => true;
 const False = () => false;
 
+/**
+ * Curry for 2 args fn
+ */
+const curry2 = (fn: (a: any, b: any) => any) => (a: any) => (b: any) =>
+  fn(a, b);
+
 const overlap = (a: string, b: string) =>
   a.toLowerCase().includes(b.toLowerCase());
 
-const searchInCountry = (search: string) => (row: Row) =>
-  overlap(row.country, search);
+const searchInCountry = curry2((search: string, row: Row) =>
+  overlap(row.country, search)
+);
 
-const searchInName = (search: string) => (row: Row) =>
-  overlap(row.name, search);
+const searchInUsername = curry2((search: string, row: Row) =>
+  overlap(row.username, search)
+);
 
-const searchInUsername = (search: string) => (row: Row) =>
-  overlap(row.username, search);
+const searchInName = curry2((search: string, row: Row) =>
+  overlap(row.name, search)
+);
 
-const filterMoreThen100 = (filters: string[]) => (row: Row) =>
-  filters.includes('More than 100 posts') && row.posts > 100;
+const filterMoreThen100 = curry2(
+  (filters: string[], row: Row) =>
+    filters.includes('More than 100 posts') && row.posts > 100
+);
 
-const filterWithoutPosts = (filters: string[]) => (row: Row) =>
-  filters.includes('Without posts') && row.posts === 0;
+const filterWithoutPosts = curry2(
+  (filters: string[], row: Row) =>
+    filters.includes('Without posts') && row.posts === 0
+);
 
 const Filter = (
   predicates: Array<(...args: any) => any>,
