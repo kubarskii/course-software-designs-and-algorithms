@@ -29,9 +29,12 @@ const Filter = (
   predicates: Array<(...args: any) => any>,
   comparator: Function = either
 ) => {
-  return predicates.reduce((fn, predicate) => {
-    return comparator(fn, predicate);
-  }, comparator == either ? False : True);
+  return predicates.reduce(
+    (fn, predicate) => {
+      return comparator(fn, predicate);
+    },
+    comparator == either ? False : True
+  );
 };
 
 const filterRows =
@@ -46,20 +49,19 @@ const filterRows =
       filterWithoutPosts(filters),
       filterMoreThen100(filters),
     ];
-    if (!query && filters.length) searchFilters.length = 0
+
+    if (!query && filters.length) searchFilters.length = 0;
     return rows.filter(Filter([...dropDownFilters, ...searchFilters]));
   };
 
 const sortRows =
   ({ sortingOrder }: TFiltersState) =>
   (rows: Row[]): Row[] => {
-    console.log(rows);
-    const res = rows.slice().sort((a, b) => {
+    if (!sortingOrder) return rows;
+    return rows.slice().sort((a, b) => {
       if (sortingOrder === 'desc') [a, b] = [b, a];
       return a.lastPayments - b.lastPayments;
     });
-    console.log(res);
-    return res;
   };
 
 const pipe =

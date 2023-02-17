@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  Reducer,
-  useCallback,
-  useEffect,
-  useReducer,
-  useState,
-} from 'react';
+import React, { FC, useCallback, useEffect, useReducer, useState } from 'react';
 import { StyledEngineProvider } from '@mui/material/styles';
 
 import { Account, Image, User } from '../types';
@@ -40,7 +33,6 @@ export const App: FC = () => {
   useEffect(() => {
     if (data) {
       const res = dataFilter(data, state);
-      console.log(res);
       setFiltered(res);
     }
   }, [state]);
