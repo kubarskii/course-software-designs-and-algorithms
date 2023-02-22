@@ -24,7 +24,7 @@ export enum Enhancer {
  * Some funny types down below
  * We don't really need them and tuples are not
  * very convenient as it's not possible to
- * change sequence
+ * change sequence of values in tuples
  *
  */
 
@@ -45,11 +45,12 @@ export type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : fals
   ? []
   : Push<TuplifyUnion<Exclude<T, L>>, L>;
 
-export type TupleCombos<T, O = T> =
+type KeyCombos<T, O = T> =
   T extends infer U
-  ? [T] | (TupleCombos<Exclude<O, U>> extends infer U extends any[]
+  ? [T] | (KeyCombos<Exclude<O, U>> extends infer U extends any[]
     ? U extends U ? TuplifyUnion<T | U[number]> : never
     : never)
   : never
 
-export type Enhancers = TupleCombos<Enhancer> | []
+
+export type Enhancers = KeyCombos<Enhancer> | []
