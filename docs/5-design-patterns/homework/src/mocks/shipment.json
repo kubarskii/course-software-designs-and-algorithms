@@ -1,0 +1,8 @@
+{
+    "ShipmentID": 1,
+    "Weight": 200,
+    "FromAddress": "street: random avenue, city: Trabzon, state: random state",
+    "ToAddress": "street: random street, city: Antalya, state: random state.",
+    "FromZipCode": "49522",
+    "ToZipCode": "70271"
+}
