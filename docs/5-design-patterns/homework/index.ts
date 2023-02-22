@@ -7,4 +7,6 @@ const isValidShipment = validateShema(shipmentMock);
 if (isValidShipment) {
   const response = new Client(shipmentMock, [ Enhancer.DO_NOT_LEAVE, Enhancer.RETURN_RECEIPT_REQUESTED, Enhancer.FRAGILE ])
   console.log(response.process());
+} else {
+  throw new Error(' INVALID SHIPMENT DETAILS ')
 }

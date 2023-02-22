@@ -22,8 +22,9 @@ export enum Enhancer {
 /**
  *
  * Some funny types down below
- * We don't really need them
- * Currently Tuples don't work as expected
+ * We don't really need them and tuples are not
+ * very convenient as it's not possible to
+ * change sequence
  *
  */
 

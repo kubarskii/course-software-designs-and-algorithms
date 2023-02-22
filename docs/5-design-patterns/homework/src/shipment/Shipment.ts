@@ -51,7 +51,7 @@ export class Shipment implements IShippable{
     ship(): string {
         let str = `Shipment with the ID ${this.shipmentID} will be picked up from ${this.fromZipCode} ${this.fromAddress} and shipped to ${this.toZipCode} ${this.toAddress}`
         const shipper = ShipperFactory.create(this)
-        str += `\nCost = ${(shipper.getCost() / 1000).toFixed(2)}`
+        str += `\nCost = ${(shipper.getCost() / 100).toFixed(2)}`
         return str
     }
  }
