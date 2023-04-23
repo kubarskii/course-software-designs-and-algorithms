@@ -11,6 +11,6 @@ export interface Path {
 
 export interface Dijkstra<T> {
   findShortestPath(vertex1: T, vertex2: T): Path;
-  findAllShortestPaths(vertex: T): Record<string, Path>;
+  findAllShortestPaths(vertex: T): Map<T, Path>;
 }
 

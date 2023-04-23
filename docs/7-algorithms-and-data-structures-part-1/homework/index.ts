@@ -9,9 +9,10 @@ const vertices = [
   new Vertex("2"),
   new Vertex("3"),
   new Vertex("4"),
+  new Vertex("5")
 ];
 
-const [vertex1, vertex2, vertex3, vertex4] = vertices;
+const [vertex1, vertex2, vertex3, vertex4, vertex5] = vertices;
 
 const edges = [
   new Edge(vertex1, vertex2, 5),
@@ -27,5 +28,6 @@ edges.forEach((edge) => graph.addEdge(edge.from, edge.to, edge.weight));
 
 const g = new DijkstraImplementation(graph)
 
-// console.log(graph.adjacencyList);
-console.log(g.findShortestPath(vertex4, vertex3));
+console.log(graph.adjacencyList);
+console.log(g.findShortestPath(vertex1, vertex5));
+console.log(g.findAllShortestPaths(vertex4));

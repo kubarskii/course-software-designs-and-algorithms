@@ -43,7 +43,7 @@ export class DijkstraImplementation<T extends Vertex<any>> implements Dijkstra<T
     return { path: [], distance: Infinity };
   }
 
-  findAllShortestPaths(vertex: T): any {
+  findAllShortestPaths(vertex: T): Map<T, Path > {
     const paths: Map<T, Path> = new Map();
     for (const otherVertex of Array.from(this.graph.adjacencyList.keys())) {
       if (vertex === otherVertex) continue;
