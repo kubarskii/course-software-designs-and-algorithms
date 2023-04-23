@@ -2,6 +2,7 @@ import { WeightedGraph } from "./types";
 import { Vertex } from "./vertex";
 import { Edge } from "./edge";
 import { Graph } from "./graph";
+import { DijkstraImplementation } from "./dijkstra";
 
 const vertices = [
   new Vertex("1"),
@@ -24,4 +25,7 @@ const graph: WeightedGraph<Vertex<string>> = new Graph();
 vertices.forEach((vertex) => graph.addVertex(vertex));
 edges.forEach((edge) => graph.addEdge(edge.from, edge.to, edge.weight));
 
-console.log(graph.adjacencyList);
+const g = new DijkstraImplementation(graph)
+
+// console.log(graph.adjacencyList);
+console.log(g.findShortestPath(vertex4, vertex3));

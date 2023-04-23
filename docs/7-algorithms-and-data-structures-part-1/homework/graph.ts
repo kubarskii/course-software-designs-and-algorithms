@@ -1,7 +1,6 @@
 import { WeightedGraph } from "./types";
-import { Vertex } from "./vertex";
 
-export class Graph<T extends Vertex<any>> implements WeightedGraph<T> {
+export class Graph<T> implements WeightedGraph<T> {
 
   private $adjacencyList: Map<T, [T, number][]> = new Map();
 
