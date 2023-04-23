@@ -1,5 +1,4 @@
-export class Vertex {
-  constructor(public value: string) {
+export class Vertex<T> {
+  constructor(public value: T) {
   }
-
 }

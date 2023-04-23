@@ -1,6 +1,7 @@
 export interface WeightedGraph<T> {
-  addVertex(key: string | T): void;
+  addVertex(key: T): void;
   addEdge(vertex1: T, vertex2: T, weight: number): void;
+  adjacencyList: Map<T, [T, number][]>
 }
 
 export interface Path {
