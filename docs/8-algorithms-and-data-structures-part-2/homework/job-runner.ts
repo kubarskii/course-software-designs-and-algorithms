@@ -92,7 +92,7 @@ class PriorityQueue<T> implements IPriorityQueue<T> {
 
   extractMax(): PriorityQueueItem<T> | null {
     if (this.data.length === 0) return null;
-    return this.data.reduce((acc, curr) => (curr.key < acc.key ? curr : acc));
+    return this.data.extractMax()
   }
 
   increaseKey(x: T, newKey: KeyValue): void {
